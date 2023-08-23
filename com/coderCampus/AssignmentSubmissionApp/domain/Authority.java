@@ -15,14 +15,16 @@ public class Authority implements GrantedAuthority {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
+
 	@ManyToOne(optional = false)
 	private User user;
-	
-	public Authority () {};
-	
-	public Authority (String authority) {
+
+	public Authority() {
+	};
+
+	public Authority(String authority) {
 		this.authority = authority;
-		
+
 	}
 
 	public Long getId() {
@@ -30,7 +32,7 @@ public class Authority implements GrantedAuthority {
 	}
 
 	public void setId(Long id) {
-    		this.id = id;
+		this.id = id;
 	}
 
 	public String getAuthority() {
@@ -38,10 +40,9 @@ public class Authority implements GrantedAuthority {
 	}
 
 	public void setAuthority(String authority) {
-		authority = authority;
+		this.authority = authority;
 	}
-		
-	
+
 	public User getUser() {
 		return user;
 	}

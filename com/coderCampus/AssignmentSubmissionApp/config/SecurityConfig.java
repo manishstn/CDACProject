@@ -10,15 +10,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity
+import com.coderCampus.AssignmentSubmissionApp.util.CustomPasswordEncoder;
+
+@EnableWebSecurity 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	@Autowired 
+	private CustomPasswordEncoder customPasswordEncoder;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService);
+		auth.userDetailsService(userDetailsService).passwordEncoder(customPasswordEncoder.getPasswordEncoder());
 	}
 
 	@Override
@@ -32,3 +37,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 }
+ 
